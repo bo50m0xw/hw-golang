@@ -2,7 +2,24 @@ package main
 
 import "fmt"
 
+func intSeq() func() int {
+	i := 0
+	return func() int {
+		i++
+		return i
+	}
+}
+
 func main() {
-	fmt.Println("Hello World 1 line")
-	fmt.Println("Hello World 2 line")
+
+	nextInt := intSeq()
+
+	fmt.Println(nextInt())
+	fmt.Println(nextInt())
+	fmt.Println(nextInt())
+
+	newInts := intSeq()
+	fmt.Println(newInts())
+	fmt.Println(nextInt())
+	fmt.Println(newInts())
 }
